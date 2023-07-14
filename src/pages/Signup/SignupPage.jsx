@@ -19,10 +19,11 @@ function LoginPage(){
                 alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
                 return;
             }
-            const response = await axios.post(ServerUrl, {
-                nickname,
-                id,
-                pw,
+            const response = axios.post(ServerUrl, {
+                nickname: nickname,
+                username: id,
+                password1: pw,
+                password2: pwCheck
             });
             console.log(response.data); // 서버의 응답 데이터 확인
             alert('회원가입이 완료되었습니다! 로그인을 다시 해주세요 :)')

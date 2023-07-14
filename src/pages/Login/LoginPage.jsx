@@ -41,14 +41,20 @@ function LoginPage(){
         navigate(`/${user.username}`);
     }
     
-    let loginData = {
-        username: id,
-        password: pw
-    }
+
+    const ServerUrl = 'https://port-0-minibackrepo1-k19y2klk242hfg.sel4.cloudtype.app/members/login/'
 
     const handleLogin = async() => {
-        const response = await axios.post(``,loginData)
-            .then(response => response.data)
+        try{
+            const response = await axios.post(ServerUrl,{
+                username: id,
+                password: pw
+            });
+            console.log(response.data)
+            navigate("/")
+        }catch(error){
+            console.error(error);
+        }
     }
     
 
