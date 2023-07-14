@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import styled from "styled-components"
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';;
+import SearchUI from './searchUI'
+
 const HeaderWrapper = styled.header`
   padding: 30px;
   background-color: #f5f5f5;
@@ -32,6 +34,9 @@ const NavLink = styled(Link)`
   text-decoration: none;
 `;
 function Header() {
+  
+
+
     return (
       <HeaderWrapper>
         <Logo>
@@ -45,6 +50,7 @@ function Header() {
             <NavItem>
               <NavLink to="/signup">회원가입</NavLink>
             </NavItem>
+            <SearchUI/>
           </NavList>
         </Navigation>
       </HeaderWrapper>
