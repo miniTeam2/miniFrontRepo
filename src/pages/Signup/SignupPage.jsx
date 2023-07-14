@@ -3,27 +3,30 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 import * as style from "./SignupPageStyle"
 
-const ServerURl = 'http://localhost:4000/api/userdata'
+const ServerUrl = 'https://port-0-minibackrepo1-k19y2klk242hfg.sel4.cloudtype.app/members/signup/'
 
 function LoginPage(){
     const navigate = useNavigate();
 
     const [id,setId] = useState('');
     const [pw,setPw] = useState('');
-    const [email, setemail] = useState('');
+    const [pwCheck,setPwCheck] = useState('')
     const [nickname,setNickname] = useState('');
 
     const handlePostData = async () => {
       try {
-        const response = await axios.post(ServerURl, {
-          nickname: email,
-          username: id,
-          password: pw,
-          email: email,
-        });
-        console.log(response.data); // 서버의 응답 데이터 확인
-        alert('회원가입이 완료되었습니다! 로그인을 다시 해주세요 :)')
-        navigate('/login')
+            if (pw !== pwCheck) {
+                alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
+                return;
+            }
+            const response = await axios.post(ServerUrl, {
+                nickname,
+                id,
+                pw,
+            });
+            console.log(response.data); // 서버의 응답 데이터 확인
+            alert('회원가입이 완료되었습니다! 로그인을 다시 해주세요 :)')
+            navigate('/login')
       } catch (error) {
         console.error(error);
       }
@@ -73,11 +76,11 @@ function LoginPage(){
                             id="pswCheck"
                             className="pswCheck"
                             onChange={e => {
-                            setPw(e.target.value);
+                            setPwCheck(e.target.value);
                             }}
                             onKeyUp={changeButton}
                         />
-                        <style.SignupTextStyle>이메일</style.SignupTextStyle>
+                        {/* <style.SignupTextStyle>이메일</style.SignupTextStyle>
                        <style.InputBox
                             type="email"
                             placeholder="이메일을 입력하세요"
@@ -86,7 +89,7 @@ function LoginPage(){
                             onChange={e => {
                             setNickname(e.target.value);
                             }}
-                        />
+                        /> */}
                         <style.SignupTextStyle>닉네임</style.SignupTextStyle>
                        <style.InputBox
                             type="nickname"
