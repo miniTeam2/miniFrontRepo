@@ -2,25 +2,27 @@ import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  width: 7rem;
-  height: 10rem;
+  width: 6rem;
+  height: 11rem;
   display: flex;
   flex-direction: column;
-  border: 1px solid grey;
   cursor: pointer;
   background: transparent;
+  border-radius: 15px;
   &:hover {
     background-color: lightgrey;
   }
+  border: 1px solid lightgrey;
 `;
 
 const StaffPoster = styled.img`
   width: 100%;
-  height: 6rem;
+  height: 7rem;
+  border-radius: 15px 15px 0px 0px;
 `;
 
 const StaffName = styled.div`
-  font-size: 20px;
+  font-size: 17px;
   text-align: left;
 `;
 

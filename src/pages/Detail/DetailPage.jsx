@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import axios from "axios";
 import styled from "styled-components"
 import StaffList from "../../components/StaffList"
+import CommentList from "../../components/CommentList";
 
 const Wrapper = styled.div`
     padding: 16px;
@@ -11,21 +12,36 @@ const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 60rem;
+    height: 50rem;
 `;
 
 const MovieContainer = styled.div`
     display: flex;
     width: 100%;
     max-width: 720px;
-    height:50rem;
+    height:60rem;
     & > * {
         :not(:last-child) {
             margin-bottom: 16px;
         }
-    }
+    margin: 20px;
 `;
 
+const TitleText = styled.div`
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    `
+
+const TitleTextKor = styled.div`
+    font-size: 30px;
+    text-align: left;
+    ;
+`
+
+const TitleTextEng = styled.div`
+    text-align:left
+    font-size: 20px;`
 
 const ImageSector = styled.img`
     width: 50%;
@@ -37,15 +53,27 @@ const InfSector = styled.div`
     height: 30rem;
     padding-left: 20px;`
 
+const CommentSector = styled.div`
+    width: 100%;
+    max-width: 720px;
+    height: 30rem;
+    `
+
+const CommentText = styled.div`
+  width: 100%;
+  padding: 20px;
+  font-size: 20px;
+  `
+
 function DetailPage({ id }) {
   const [movie, setMovie] = useState([]);
-
+  const [comment,setComment] = useState("");
   const { movieName } = useParams();
 
   const fetchMovieDetail = async () => {
     try {
       const response = await axios.get(
-        `https://api.hufs-likelion-movie.kro.kr/movies/1`
+        `https://port-0-minibackrepo1-k19y2klk242hfg.sel4.cloudtype.app/movielist/detail/${movieName}`
       );
       setMovie(response.data);
     } catch (error) {
@@ -63,8 +91,8 @@ function DetailPage({ id }) {
 
   return (
     <Wrapper>
-        <h1>{movie.title_kor}</h1>
-        <h5>{movie.title_eng}</h5>
+        <TitleTextKor>{movie.title_kor}</TitleTextKor>
+        <TitleTextEng>{movie.title_eng}</TitleTextEng>
         <MovieContainer>
             <ImageSector src= {movie.poster_url}></ImageSector>
             <InfSector>
@@ -78,8 +106,11 @@ function DetailPage({ id }) {
                 <p>줄거리<br /> {movie.summary}</p>
             </InfSector>
       </MovieContainer>
-        <StaffList></StaffList>
-
+        <StaffList/>
+      <CommentSector>
+        <CommentText>한줄평</CommentText>
+        <CommentList/>
+      </CommentSector>
     </Wrapper>
   );
 }

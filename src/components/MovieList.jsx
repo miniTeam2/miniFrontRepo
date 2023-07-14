@@ -23,9 +23,9 @@ function MovieList() {
   const fetchData = async () => {
     try {
       const movieListData = await axios.get(
-        "https://api.hufs-likelion-movie.kro.kr/movies"
+        "https://port-0-minibackrepo1-k19y2klk242hfg.sel4.cloudtype.app/movielist/movies/"
       );
-      setMovieData(movieListData.data.movies);
+      setMovieData(movieListData.data.results);
     } catch (error) {
       alert("정보를 가져오는데 실패했습니다.");
     }
