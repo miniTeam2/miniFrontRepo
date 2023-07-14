@@ -8,7 +8,7 @@ const SearchUI=({ onSearch = () => {} }) => {
   const handleSearch = () => {
     if (typeof onSearch === 'function') {
       onSearch(searchTerm);
-      navigate(`/search/${encodeURIComponent(searchTerm)}`);
+      navigate(`/search/${searchTerm}`);
     }
   };
   return (
