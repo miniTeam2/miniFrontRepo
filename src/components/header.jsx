@@ -4,7 +4,7 @@ function Header() {
     return (
       <HeaderWrapper>
         <Logo>
-          <NavLink to="/">루튼토마토</NavLink>
+          <NavLink to="/">루튼도마도</NavLink>
         </Logo>
         <Navigation>
           <NavList>
