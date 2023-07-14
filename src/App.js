@@ -12,12 +12,11 @@ function App() {
     <BrowserRouter>
     <Header />
       <Routes>
-        <Route path = "/:userId" element={<MainPage/>} />
+        <Route path = "/" element={<MainPage/>} />
         <Route path = "/login" element={<LoginPage/>}/>
         <Route path = "/signup" element={<SignupPage/>}/>
         <Route path="/Search/:searchId" element={<SearchResultPage />} />
-        <Route path="/:movieId" element={<DetailPage />} />
-        <Route path = "*" element={<Navigate to = "/login" replace = {true} />} />
+        <Route path="/movie/:movieName" element={<DetailPage />} />
       </Routes>
     <Footer />
   </BrowserRouter>
