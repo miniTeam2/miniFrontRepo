@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled from 'styled-components';;
 const HeaderWrapper = styled.header`
   padding: 30px;
   background-color: #f5f5f5;
