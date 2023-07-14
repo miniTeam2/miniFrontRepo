@@ -1,5 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+const HeaderWrapper = styled.header`
+  padding: 30px;
+  background-color: #f5f5f5;
+`;
+
+const Logo = styled.h1`
+  font-size: 24px;
+  margin: 0;
+  text-decoration: none;
+`;
+
+const Navigation = styled.nav`
+  margin-top: 20px;
+`;
+
+const NavList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
+`;
+
+const NavItem = styled.li`
+  font-size: 16px;
+  text-decoration: none;
+`;
+const NavLink = styled(Link)`
+  text-decoration: none;
+`;
 function Header() {
     return (
       <HeaderWrapper>
