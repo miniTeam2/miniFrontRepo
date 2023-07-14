@@ -11,7 +11,7 @@ const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 60rem;
+    height: 50rem;
 `;
 
 const MovieContainer = styled.div`
@@ -23,9 +23,24 @@ const MovieContainer = styled.div`
         :not(:last-child) {
             margin-bottom: 16px;
         }
-    }
+    margin: 20px;
 `;
 
+const TitleText = styled.div`
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    `
+
+const TitleTextKor = styled.div`
+    font-size: 30px;
+    text-align: left;
+    ;
+`
+
+const TitleTextEng = styled.div`
+    text-align:left
+    font-size: 20px;`
 
 const ImageSector = styled.img`
     width: 50%;
@@ -63,8 +78,8 @@ function DetailPage({ id }) {
 
   return (
     <Wrapper>
-        <h1>{movie.title_kor}</h1>
-        <h5>{movie.title_eng}</h5>
+        <TitleTextKor>{movie.title_kor}</TitleTextKor>
+        <TitleTextEng>{movie.title_eng}</TitleTextEng>
         <MovieContainer>
             <ImageSector src= {movie.poster_url}></ImageSector>
             <InfSector>
