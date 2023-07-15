@@ -15,7 +15,7 @@ const SearchUI=({ onSearch = () => {} }) => {
     <div className="SearchUI">
       <input
         type="text"
-        placeholder="검색어를 입력하세요."
+        placeholder="영화 제목을 입력하세요."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />

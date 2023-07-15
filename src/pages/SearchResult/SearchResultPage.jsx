@@ -6,7 +6,7 @@ import SearchMovieList from "../../components/SearchMovieList";
 const SearchResultPage = () => {
   const { searchTerm } = useParams();
   const [searchResults, setSearchResults] = useState([]);
-
+///SearchUI에 있는 onSearch를 가져와야 함
   // const handleSearch = async () => {
   //   try {
   //     const response = await axios.get(`https://port-0-minibackrepo1-k19y2klk242hfg.sel4.cloudtype.app/movielist/search/${searchTerm}`);
@@ -20,7 +20,7 @@ const SearchResultPage = () => {
   //     handleSearch();
   //   }
   // }, [searchTerm]);
-//<SearchUI onSearch={handleSearch} />h2 뒤에 있었떤
+//h2 뒤에 있었떤 <SearchUI onSearch={handleSearch} />
   return (
     <div className="SearchResultPage">
       <h2>검색 결과 페이지</h2>
