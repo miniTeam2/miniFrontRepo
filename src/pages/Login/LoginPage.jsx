@@ -49,10 +49,20 @@ function LoginPage(){
             const response = await axios.post(ServerUrl,{
                 username: id,
                 password: pw
-            });
-            console.log(response.data)
-            navigate("/")
+            },
+            {
+                headers: {
+                  'Content-Type': 'application/json',
+                  Authorization: 'token',
+                },
+              }).then(function(response) {
+                localStorage.setItem('token',response.data.access)
+                console.log(response.data.access)
+                alert('성공적으로 로그인 되었습니다!')
+                navigate("/")
+              })
         }catch(error){
+            alert("로그인에 실패하였습니다.")
             console.error(error);
         }
     }

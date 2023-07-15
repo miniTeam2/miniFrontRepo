@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import StaffListItem from "./StaffListItem";
 import axios from "axios";
 
@@ -17,15 +17,16 @@ const MoviesContainer = styled.div`
 `;
 
 function StaffList() {
+  const {movieName} = useParams();
   const navigate = useNavigate();
   const [staffData, setStaffData] = useState([]);
 
   const fetchData = async () => {
     try {
       const staffListData = await axios.get(
-        "https://api.hufs-likelion-movie.kro.kr/movies/1"
+        `https://port-0-minibackrepo1-k19y2klk242hfg.sel4.cloudtype.app/movielist/detail/${movieName}/`
       );
-      setStaffData(staffListData.data.staff);
+      setStaffData(staffListData.data.staffs);
     } catch (error) {
       alert("정보를 가져오는데 실패했습니다.");
     }
