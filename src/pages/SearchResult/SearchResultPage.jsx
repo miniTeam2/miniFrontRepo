@@ -1,39 +1,44 @@
 import React, { useState, useEffect } from "react";
-//import axios from "axios";
-import {useParams} from "react-router-dom";
-import SearchUI from "../../components/searchUI";
+import axios from "axios";
 import SearchMovieList from "../../components/SearchMovieList";
+
 const SearchResultPage = () => {
-  const { searchTerm } = useParams();
-  const [searchResults, setSearchResults] = useState([]);
-///SearchUI에 있는 onSearch를 가져와야 함
-  // const handleSearch = async () => {
-  //   try {
-  //     const response = await axios.get(`https://port-0-minibackrepo1-k19y2klk242hfg.sel4.cloudtype.app/movielist/search/${searchTerm}`);
-  //     setSearchResults(response.data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-  // useEffect(() => {
-  //   if (searchTerm) {
-  //     handleSearch();
-  //   }
-  // }, [searchTerm]);
-//h2 뒤에 있었떤 <SearchUI onSearch={handleSearch} />
-  return (
-    <div className="SearchResultPage">
-      <h2>검색 결과 페이지</h2>
-      {searchResults.length > 0 && (
-        <div className="search-results">
-          <h2>검색 결과</h2>
-          <SearchMovieList
-            searchTerm = {searchTerm}/>
-        </div>
-        )}
-        </div>
+  const [searchTerm, setSearchTerm] = useState("");
+  const [movieData, setMovieData] = useState([]);
+
+  const handleSearch = async () => {
+    try {
+      const movieListData = await axios.get(
+        `https://port-0-minibackrepo1-k19y2klk242hfg.sel4.cloudtype.app/movielist/search/${searchTerm}/`
       );
-    };
-  // searchResults && searchResults.length>0
+      console.log(movieListData.data.results);
+      setMovieData(movieListData.data.results);
+    } catch (error) {
+      alert("정보를 가져오는데 실패했습니다.");
+    }
+  };
+
+  useEffect(() => {
+    if (searchTerm !== "") {
+      handleSearch();
+    }
+  }, [searchTerm]);
+
+  return (
+    <div>
+      <div>
+        <h2>검색하기</h2>
+        <input
+          type="text"
+          placeholder="영화 제목을 입력하세요."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <button onClick={handleSearch}>검색</button>
+        {movieData && <SearchMovieList movieData={movieData} />}
+      </div>
+    </div>
+  );
+};
 
 export default SearchResultPage;

@@ -50,7 +50,9 @@ function Header() {
             <NavItem>
               <NavLink to="/signup">회원가입</NavLink>
             </NavItem>
-            <SearchUI/>
+            <NavItem>
+              <NavLink to = "/search">검색하기</NavLink>
+            </NavItem>
           </NavList>
         </Navigation>
       </HeaderWrapper>

@@ -12,13 +12,12 @@ function App() {
     <BrowserRouter>
     <Header />
       <Routes>
-        <Route path = "/" element={<MainPage/>} />
+        <Route path = "/:moviePage" element={<MainPage/>} />
         <Route path = "/login" element={<LoginPage/>}/>
         <Route path = "/signup" element={<SignupPage/>}/>
-        <Route path="/search/:searchId" element={<SearchResultPage />} />
+        <Route path="/search" element={<SearchResultPage />} />
         <Route path="/movie/:movieName" element={<DetailPage />} />
       </Routes>
-    <Footer />
   </BrowserRouter>
   );
 }
